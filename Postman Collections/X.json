@@ -6,6 +6,124 @@
 	},
 	"item": [
 		{
+			"name": "Templates",
+			"item": [
+				{
+					"name": "Order T All",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+								"exec": [
+									"const moment = require('moment');\r",
+									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "f22d0399-0cdc-4438-8d22-0f4c6a80fdb3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{X-Api-Key}}",
+								"type": "text"
+							},
+							{
+								"key": "api-version",
+								"value": "1.0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressFrom\": null,\r\n  \"addressTo\": {\r\n    \"name\": \"Name of recipient\",\r\n    \"contactPerson\": \"Contact for recipient\",\r\n    \"country\": \"RO\",\r\n    \"countryName\": null,\r\n    \"countyId\": null,\r\n    \"localityId\": null,\r\n    \"countryId\": null,\r\n    \"countyName\": \"Bucuresti\",\r\n    \"localityName\": \"Bucuresti\",\r\n    \"addressText\": \"Adress text 10\",\r\n    \"postalCode\": \"123456\",\r\n    \"phone\": \"+40734123456\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": null,\r\n    \"courierFixedLocationId\": null,\r\n    \"fixedLocationName\": null\r\n  },\r\n  \"payment\": \"{{payment}}\",\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 1,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 20,\r\n          \"height\": 50,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 1,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"reference1\",\r\n        \"reference2\": \"reference1\",\r\n        \"customerBarcode\": null\r\n      }\r\n    ],\r\n    \"invoiceNumber\": \"invoice 0001\",\r\n    \"invoiceDate\": \"0001-01-01T00:00:00\",\r\n    \"invoiceValue\": 13,\r\n    \"invoiceValueCurrency\": \"EUR\",\r\n    \"articles\": [\r\n      {\r\n        \"quantity\": 1,\r\n        \"description\": \"article description\",\r\n        \"countryOfOrigin\": \"BG\",\r\n        \"tariff\": \"tariff\",\r\n        \"weightNet\": 1,\r\n        \"weightGross\": 1,\r\n        \"pricePerPieceAmount\": 13,\r\n        \"pricePerPieceAmountCurrency\": \"EUR\",\r\n        \"sku\": \"1\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null,\r\n    \"customsDeclaration\": {\r\n      \"exporter\": {\r\n        \"name\": \"Name of Exporter\",\r\n        \"contactPerson\": \"Contact for Exporter\",\r\n        \"country\": \"BG\",\r\n        \"countryName\": null,\r\n        \"countyId\": null,\r\n        \"localityId\": null,\r\n        \"countryId\": null,\r\n        \"countyName\": \"Varna\",\r\n        \"localityName\": \"Varna\",\r\n        \"addressText\": \"Exporter Adress\",\r\n        \"postalCode\": \"1234\",\r\n        \"phone\": \"+40734123456\",\r\n        \"email\": \"email@emailserver.com\",\r\n        \"fixedLocationId\": null,\r\n        \"courierFixedLocationId\": null,\r\n        \"fixedLocationName\": null\r\n      },\r\n      \"importer\": {\r\n        \"name\": \"Name of Importer\",\r\n        \"contactPerson\": \"Contact for Importer\",\r\n        \"country\": \"RO\",\r\n        \"countryName\": null,\r\n        \"countyId\": null,\r\n        \"localityId\": null,\r\n        \"countryId\": null,\r\n        \"countyName\": \"Bucuresti\",\r\n        \"localityName\": \"Bucuresti\",\r\n        \"addressText\": \"Importer Adress\",\r\n        \"postalCode\": \"123456\",\r\n        \"phone\": \"+40734123456\",\r\n        \"email\": \"email@emailserver.com\",\r\n        \"fixedLocationId\": null,\r\n        \"courierFixedLocationId\": null,\r\n        \"fixedLocationName\": null\r\n      },\r\n      \"exporterTaxId\": \"exporter taxId\",\r\n      \"exporterEORI\": \"eori 12345\",\r\n      \"exporterBN\": \"BN\",\r\n      \"importerTaxId\": \"importer taxId\",\r\n      \"importerEORI\": \"eori 54321\",\r\n      \"reason\": \"NonCommercialShipment\",\r\n      \"incoterm\": \"incoterm\",\r\n      \"attachments\": [\r\n        {\r\n          \"name\": \"file\",\r\n          \"content\": \"text\"\r\n        }\r\n      ]\r\n    },\r\n    \"marketPlace\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": false,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"externalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"extra data information\",\r\n  \"sourceChannel\": \"Swagger\",\r\n  \"observation\": \"Call one hour before\",\r\n  \"customAttributes\": null,\r\n  \"clientSettings\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://api.innoship.com/api/Order"
+					},
+					"response": []
+				},
+				{
+					"name": "Order T",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+								"exec": [
+									"const moment = require('moment');\r",
+									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "afa58f5c-6c54-4b12-b5e9-eed7f862c00f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Api-Key",
+								"value": "{{X-Api-Key}}",
+								"type": "text"
+							},
+							{
+								"key": "api-version",
+								"value": "1.0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressFrom\": null,\r\n  \"addressTo\": {\r\n    \"name\": \"Name of recipient\",\r\n    \"contactPerson\": \"Contact for recipient\",\r\n    \"country\": \"RO\",\r\n    \"countryName\": null,\r\n    \"countyId\": null,\r\n    \"localityId\": null,\r\n    \"countryId\": null,\r\n    \"countyName\": \"Bucuresti\",\r\n    \"localityName\": \"Bucuresti\",\r\n    \"addressText\": \"Adress text 10\",\r\n    \"postalCode\": \"123456\",\r\n    \"phone\": \"+40734123456\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": null,\r\n    \"courierFixedLocationId\": null,\r\n    \"fixedLocationName\": null\r\n  },\r\n  \"payment\": \"{{payment}}\",\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 1,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 20,\r\n          \"height\": 50,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 1,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"reference1\",\r\n        \"reference2\": \"reference1\",\r\n        \"customerBarcode\": null\r\n      }\r\n    ],\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": false,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"externalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"extra data information\",\r\n  \"sourceChannel\": \"Swagger\",\r\n  \"observation\": \"Call one hour before\",\r\n  \"customAttributes\": null,\r\n  \"clientSettings\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://api.innoship.com/api/Order"
+					},
+					"response": []
+				}
+			],
+			"id": "c6bea914-faed-4f12-b4f1-66dcd52f1ff8"
+		},
+		{
 			"name": "LabelCheck",
 			"item": [],
 			"id": "7a44d3d6-dad2-4158-a2fa-a8978b82f735"
@@ -472,7 +590,7 @@
 					"id": "4523a4ed-117c-4cae-b6d1-c16c8dbe2158"
 				},
 				{
-					"name": "Order T All",
+					"name": "Order",
 					"event": [
 						{
 							"listen": "test",
@@ -490,13 +608,14 @@
 								"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
 								"exec": [
 									"const moment = require('moment');\r",
-									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+									"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"id": "f22d0399-0cdc-4438-8d22-0f4c6a80fdb3",
+					"id": "5282ab8f-6d7e-4826-962c-aae84c4b7dba",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -516,63 +635,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressFrom\": null,\r\n  \"addressTo\": {\r\n    \"name\": \"Name of recipient\",\r\n    \"contactPerson\": \"Contact for recipient\",\r\n    \"country\": \"RO\",\r\n    \"countryName\": null,\r\n    \"countyId\": null,\r\n    \"localityId\": null,\r\n    \"countryId\": null,\r\n    \"countyName\": \"Bucuresti\",\r\n    \"localityName\": \"Bucuresti\",\r\n    \"addressText\": \"Adress text 10\",\r\n    \"postalCode\": \"123456\",\r\n    \"phone\": \"+40734123456\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": null,\r\n    \"courierFixedLocationId\": null,\r\n    \"fixedLocationName\": null\r\n  },\r\n  \"payment\": \"{{payment}}\",\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 1,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 20,\r\n          \"height\": 50,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 1,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"reference1\",\r\n        \"reference2\": \"reference1\",\r\n        \"customerBarcode\": null\r\n      }\r\n    ],\r\n    \"invoiceNumber\": \"invoice 0001\",\r\n    \"invoiceDate\": \"0001-01-01T00:00:00\",\r\n    \"invoiceValue\": 13,\r\n    \"invoiceValueCurrency\": \"EUR\",\r\n    \"articles\": [\r\n      {\r\n        \"quantity\": 1,\r\n        \"description\": \"article description\",\r\n        \"countryOfOrigin\": \"BG\",\r\n        \"tariff\": \"tariff\",\r\n        \"weightNet\": 1,\r\n        \"weightGross\": 1,\r\n        \"pricePerPieceAmount\": 13,\r\n        \"pricePerPieceAmountCurrency\": \"EUR\",\r\n        \"sku\": \"1\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null,\r\n    \"customsDeclaration\": {\r\n      \"exporter\": {\r\n        \"name\": \"Name of Exporter\",\r\n        \"contactPerson\": \"Contact for Exporter\",\r\n        \"country\": \"BG\",\r\n        \"countryName\": null,\r\n        \"countyId\": null,\r\n        \"localityId\": null,\r\n        \"countryId\": null,\r\n        \"countyName\": \"Varna\",\r\n        \"localityName\": \"Varna\",\r\n        \"addressText\": \"Exporter Adress\",\r\n        \"postalCode\": \"1234\",\r\n        \"phone\": \"+40734123456\",\r\n        \"email\": \"email@emailserver.com\",\r\n        \"fixedLocationId\": null,\r\n        \"courierFixedLocationId\": null,\r\n        \"fixedLocationName\": null\r\n      },\r\n      \"importer\": {\r\n        \"name\": \"Name of Importer\",\r\n        \"contactPerson\": \"Contact for Importer\",\r\n        \"country\": \"RO\",\r\n        \"countryName\": null,\r\n        \"countyId\": null,\r\n        \"localityId\": null,\r\n        \"countryId\": null,\r\n        \"countyName\": \"Bucuresti\",\r\n        \"localityName\": \"Bucuresti\",\r\n        \"addressText\": \"Importer Adress\",\r\n        \"postalCode\": \"123456\",\r\n        \"phone\": \"+40734123456\",\r\n        \"email\": \"email@emailserver.com\",\r\n        \"fixedLocationId\": null,\r\n        \"courierFixedLocationId\": null,\r\n        \"fixedLocationName\": null\r\n      },\r\n      \"exporterTaxId\": \"exporter taxId\",\r\n      \"exporterEORI\": \"eori 12345\",\r\n      \"exporterBN\": \"BN\",\r\n      \"importerTaxId\": \"importer taxId\",\r\n      \"importerEORI\": \"eori 54321\",\r\n      \"reason\": \"NonCommercialShipment\",\r\n      \"incoterm\": \"incoterm\",\r\n      \"attachments\": [\r\n        {\r\n          \"name\": \"file\",\r\n          \"content\": \"text\"\r\n        }\r\n      ]\r\n    },\r\n    \"marketPlace\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": false,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"externalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"extra data information\",\r\n  \"sourceChannel\": \"Swagger\",\r\n  \"observation\": \"Call one hour before\",\r\n  \"customAttributes\": null,\r\n  \"clientSettings\": null\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://api.innoship.com/api/Order"
-					},
-					"response": []
-				},
-				{
-					"name": "Order T",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
-								"exec": [
-									"const moment = require('moment');\r",
-									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "afa58f5c-6c54-4b12-b5e9-eed7f862c00f",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-Api-Key",
-								"value": "{{X-Api-Key}}",
-								"type": "text"
-							},
-							{
-								"key": "api-version",
-								"value": "1.0",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressFrom\": null,\r\n  \"addressTo\": {\r\n    \"name\": \"Name of recipient\",\r\n    \"contactPerson\": \"Contact for recipient\",\r\n    \"country\": \"RO\",\r\n    \"countryName\": null,\r\n    \"countyId\": null,\r\n    \"localityId\": null,\r\n    \"countryId\": null,\r\n    \"countyName\": \"Bucuresti\",\r\n    \"localityName\": \"Bucuresti\",\r\n    \"addressText\": \"Adress text 10\",\r\n    \"postalCode\": \"123456\",\r\n    \"phone\": \"+40734123456\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": null,\r\n    \"courierFixedLocationId\": null,\r\n    \"fixedLocationName\": null\r\n  },\r\n  \"payment\": \"{{payment}}\",\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 1,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 20,\r\n          \"height\": 50,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 1,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"reference1\",\r\n        \"reference2\": \"reference1\",\r\n        \"customerBarcode\": null\r\n      }\r\n    ],\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": false,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"externalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"extra data information\",\r\n  \"sourceChannel\": \"Swagger\",\r\n  \"observation\": \"Call one hour before\",\r\n  \"customAttributes\": null,\r\n  \"clientSettings\": null\r\n}",
+							"raw": "\r\n{\r\n  \"ServiceId\": {{serviceId}},\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressFrom\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -642,11 +705,6 @@
 				}
 			],
 			"id": "266b0433-283d-406a-a05a-4eb8c7ed7cdb"
-		},
-		{
-			"name": "Templates",
-			"item": [],
-			"id": "c6bea914-faed-4f12-b4f1-66dcd52f1ff8"
 		}
 	]
 }
