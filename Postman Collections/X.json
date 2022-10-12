@@ -39,7 +39,7 @@
 				"header": [
 					{
 						"key": "X-Api-Key",
-						"value": "C5BFF7F0-B4DF-475E-A331-F737424F013C",
+						"value": "{{X-Api-Key}}",
 						"type": "text"
 					},
 					{
