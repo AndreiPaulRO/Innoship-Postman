@@ -38,6 +38,7 @@
 											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
 											"\r",
 											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100;\r",
 											"pm.environment.set(\"externalOrderId\", value+1);"
 										],
 										"type": "text/javascript"
