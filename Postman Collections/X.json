@@ -472,7 +472,7 @@
 					"id": "4523a4ed-117c-4cae-b6d1-c16c8dbe2158"
 				},
 				{
-					"name": "Order",
+					"name": "Order Template",
 					"event": [
 						{
 							"listen": "test",
