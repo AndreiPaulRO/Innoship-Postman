@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Order Courier Test",
+			"name": "Order",
 			"event": [
 				{
 					"listen": "test",
