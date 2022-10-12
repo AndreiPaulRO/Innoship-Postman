@@ -35,7 +35,10 @@
 										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
 										"exec": [
 											"const moment = require('moment');\r",
-											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"var\");\r",
+											"pm.environment.set(\"var\", value+1);"
 										],
 										"type": "text/javascript"
 									}
