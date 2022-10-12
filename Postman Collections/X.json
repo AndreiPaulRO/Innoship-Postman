@@ -80,7 +80,10 @@
 						"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
 						"exec": [
 							"const moment = require('moment');\r",
-							"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+							"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+							"\r",
+							"const moment = require('moment');\r",
+							"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));"
 						],
 						"type": "text/javascript"
 					}
