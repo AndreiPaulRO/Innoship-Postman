@@ -11,6 +11,11 @@
 			"id": "7a44d3d6-dad2-4158-a2fa-a8978b82f735"
 		},
 		{
+			"name": "New Folder",
+			"item": [],
+			"id": "266b0433-283d-406a-a05a-4eb8c7ed7cdb"
+		},
+		{
 			"name": "Order",
 			"event": [
 				{
