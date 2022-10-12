@@ -37,8 +37,8 @@
 											"const moment = require('moment');\r",
 											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
 											"\r",
-											"var value = pm.environment.get(\"var\");\r",
-											"pm.environment.set(\"var\", value+1);"
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"pm.environment.set(\"externalOrderId\", value+1);"
 										],
 										"type": "text/javascript"
 									}
