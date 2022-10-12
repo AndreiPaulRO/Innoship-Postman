@@ -81,8 +81,6 @@
 						"exec": [
 							"const moment = require('moment');\r",
 							"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
-							"\r",
-							"const moment = require('moment');\r",
 							"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));"
 						],
 						"type": "text/javascript"
