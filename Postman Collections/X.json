@@ -15,7 +15,456 @@
 			"item": [
 				{
 					"name": "Service",
-					"item": [],
+					"item": [
+						{
+							"name": "Order_serviceId_1",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "6fbc6c47-c53d-4af7-a65b-0f0fbd3cda47",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n  \"ServiceId\": 1,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order_serviceId_3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "0aaef7c1-8fd6-4102-861d-4fb7409ec044",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n  \"ServiceId\": 3,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order_serviceId_4",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "347f77cc-0685-4987-8549-a9c8dbde8616",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n  \"ServiceId\": 4,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order_serviceId_5",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "7c7c486e-4179-45ae-8434-ffed3d4acd00",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n  \"ServiceId\": 5,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order_serviceId_6",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "4a2a2662-c4f9-4c11-84fc-18e5832b81b8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n  \"ServiceId\": 6,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order_serviceId_11",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "13c60f30-446e-40f4-992a-0d49d32617fa",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n  \"ServiceId\": 6,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order_serviceId_6 Copy 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "7c2b1fae-ff1a-4a26-90d5-e5ec36187134",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n  \"ServiceId\": 6,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order_serviceId_6 Copy 3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "ec8c6eba-d346-4675-9b13-ebd43fa03d08",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "\r\n{\r\n  \"ServiceId\": 6,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						}
+					],
 					"id": "4523a4ed-117c-4cae-b6d1-c16c8dbe2158"
 				},
 				{
@@ -64,286 +513,6 @@
 						"body": {
 							"mode": "raw",
 							"raw": "\r\n{\r\n  \"ServiceId\": {{serviceId}},\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://api.innoship.com/api/Order"
-					},
-					"response": []
-				},
-				{
-					"name": "Order_serviceId_1",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
-								"exec": [
-									"const moment = require('moment');\r",
-									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "6fbc6c47-c53d-4af7-a65b-0f0fbd3cda47",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-Api-Key",
-								"value": "{{X-Api-Key}}",
-								"type": "text"
-							},
-							{
-								"key": "api-version",
-								"value": "1.0",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\r\n{\r\n  \"ServiceId\": 1,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://api.innoship.com/api/Order"
-					},
-					"response": []
-				},
-				{
-					"name": "Order_serviceId_3",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
-								"exec": [
-									"const moment = require('moment');\r",
-									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "0aaef7c1-8fd6-4102-861d-4fb7409ec044",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-Api-Key",
-								"value": "{{X-Api-Key}}",
-								"type": "text"
-							},
-							{
-								"key": "api-version",
-								"value": "1.0",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\r\n{\r\n  \"ServiceId\": 3,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://api.innoship.com/api/Order"
-					},
-					"response": []
-				},
-				{
-					"name": "Order_serviceId_4",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
-								"exec": [
-									"const moment = require('moment');\r",
-									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "347f77cc-0685-4987-8549-a9c8dbde8616",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-Api-Key",
-								"value": "{{X-Api-Key}}",
-								"type": "text"
-							},
-							{
-								"key": "api-version",
-								"value": "1.0",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\r\n{\r\n  \"ServiceId\": 4,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://api.innoship.com/api/Order"
-					},
-					"response": []
-				},
-				{
-					"name": "Order_serviceId_5",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
-								"exec": [
-									"const moment = require('moment');\r",
-									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "7c7c486e-4179-45ae-8434-ffed3d4acd00",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-Api-Key",
-								"value": "{{X-Api-Key}}",
-								"type": "text"
-							},
-							{
-								"key": "api-version",
-								"value": "1.0",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\r\n{\r\n  \"ServiceId\": 5,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "https://api.innoship.com/api/Order"
-					},
-					"response": []
-				},
-				{
-					"name": "Order_serviceId_6",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
-								"exec": [
-									"const moment = require('moment');\r",
-									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"id": "4a2a2662-c4f9-4c11-84fc-18e5832b81b8",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-Api-Key",
-								"value": "{{X-Api-Key}}",
-								"type": "text"
-							},
-							{
-								"key": "api-version",
-								"value": "1.0",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\r\n{\r\n  \"ServiceId\": 6,\r\n  \"CourierId\": {{courierId}},\r\n  \"ShipmentDate\": \"{{shipmentDate}}\",\r\n  \"ShipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"AddressTo\": {\r\n    \"Name\": \"TEST Carrier\",\r\n    \"ContactPerson\": \"TEST Carrier\",\r\n    \"Country\": \"RO\",\r\n    \"CountyName\": \"Brasov\",\r\n    \"LocalityName\": \"Brasov\",\r\n    \"AddressText\": \"Strada Test nr 120\",\r\n    \"PostalCode\": \"900000\",\r\n    \"Phone\": \"0722222222\",\r\n    \"Email\": \"abc@yahoo.com\"\r\n  },\r\n  \"Payment\": \"{{payment}}\",\r\n  \"Content\": {\r\n    \"EnvelopeCount\": 0,\r\n    \"ParcelsCount\": 1,\r\n    \"PalettesCount\": 0,\r\n    \"TotalWeight\": 20,\r\n    \"Contents\": \"Continut colet\",\r\n    \"Package\": \"-\",\r\n    \"OversizedPackage\": false,\r\n    \"Parcels\": [\r\n      {\r\n        \"SequenceNo\": 1,\r\n        \"Size\": {\r\n          \"Width\": 10,\r\n          \"Height\": 10,\r\n          \"Length\": 10\r\n        },\r\n        \"Weight\": 1,\r\n        \"Type\": 2,\r\n        \"Reference1\": \"1297258\"\r\n      }\r\n    ]\r\n  },\r\n  \"Extra\": {\r\n    \"BankRepaymentAmount\": null,\r\n    \"BankRepaymentCurrency\": null,\r\n    \"CashOnDeliveryAmount\": null,\r\n    \"CashRepaymentCurrency\": null,\r\n    \"DeclaredValueAmount\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"returnOfDocuments\": false,\r\n    \"returnOfDocumentsComment\": false,\r\n    \"returnPackage\": false,\r\n    \"OpenPackage\": false,\r\n    \"SaturdayDelivery\": false\r\n  },\r\n  \"Parameters\": {\r\n    \"Async\": true,\r\n    \"GetParcelsBarcodes\": true,\r\n    \"IncludeCourierResponse\": true,\r\n    \"IncludePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"observation\": \"observatii test\",\r\n  \"ExternalOrderId\": \"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
