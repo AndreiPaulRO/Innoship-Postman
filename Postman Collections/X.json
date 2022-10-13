@@ -729,6 +729,7 @@
 								"exec": [
 									"const moment = require('moment');\r",
 									"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+									"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
 									"\r",
 									"var value = pm.environment.get(\"externalOrderId\");\r",
 									"value = 100;\r",
