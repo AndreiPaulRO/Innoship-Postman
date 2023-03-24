@@ -710,6 +710,24 @@
 			"name": "CZ",
 			"item": [
 				{
+					"name": "PPL",
+					"item": [
+						{
+							"name": "New Request",
+							"id": "3cb5dc7e-7366-438c-8ec5-246102d0034a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					],
+					"id": "12dd7745-a655-4020-985c-2d99fa05b14b"
+				},
+				{
 					"name": "Order CZ",
 					"event": [
 						{
@@ -772,11 +790,6 @@
 				}
 			],
 			"id": "cd552a06-03ff-47fa-9232-7841f701f7c6"
-		},
-		{
-			"name": "PPL",
-			"item": [],
-			"id": "12dd7745-a655-4020-985c-2d99fa05b14b"
 		}
 	]
 }
