@@ -795,7 +795,7 @@
 											}
 										],
 										"url": {
-											"raw": "https://api.innoship.com/api/Label/by-courier/3/awb/2657212230006?type=ZPL&format=A6&skipCache=true",
+											"raw": "https://api.innoship.com/api/Label/by-courier/80/awb/2657212230006?type=ZPL&format=A6&skipCache=true",
 											"protocol": "https",
 											"host": [
 												"api",
@@ -806,7 +806,7 @@
 												"api",
 												"Label",
 												"by-courier",
-												"3",
+												"80",
 												"awb",
 												"2657212230006"
 											],
