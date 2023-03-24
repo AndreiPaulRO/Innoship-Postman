@@ -124,11 +124,6 @@
 			"id": "c6bea914-faed-4f12-b4f1-66dcd52f1ff8"
 		},
 		{
-			"name": "LabelCheck",
-			"item": [],
-			"id": "7a44d3d6-dad2-4158-a2fa-a8978b82f735"
-		},
-		{
 			"name": "CourierResponse",
 			"item": [
 				{
@@ -712,6 +707,136 @@
 				{
 					"name": "PPL",
 					"item": [
+						{
+							"name": "LabelCheck",
+							"item": [
+								{
+									"name": "Label Copy",
+									"id": "aab3a802-d979-47b9-9b25-01b1f17d9912",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											},
+											{
+												"key": "Content-type",
+												"value": "application/pdf",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://api.innoship.com/api/Label/by-courier/80/awb/642082000258438?type=pdf&format=A6&skipCache=true",
+											"protocol": "https",
+											"host": [
+												"api",
+												"innoship",
+												"com"
+											],
+											"path": [
+												"api",
+												"Label",
+												"by-courier",
+												"80",
+												"awb",
+												"642082000258438"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "pdf"
+												},
+												{
+													"key": "format",
+													"value": "A6"
+												},
+												{
+													"key": "skipCache",
+													"value": "true"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Label ZPL Copy",
+									"id": "8f6858b4-6676-4245-b7f0-65b61f198a28",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											},
+											{
+												"key": "Content-type",
+												"value": "application/pdf",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "https://api.innoship.com/api/Label/by-courier/3/awb/2657212230006?type=ZPL&format=A6&skipCache=true",
+											"protocol": "https",
+											"host": [
+												"api",
+												"innoship",
+												"com"
+											],
+											"path": [
+												"api",
+												"Label",
+												"by-courier",
+												"3",
+												"awb",
+												"2657212230006"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "ZPL"
+												},
+												{
+													"key": "format",
+													"value": "A6"
+												},
+												{
+													"key": "skipCache",
+													"value": "true"
+												},
+												{
+													"key": "useFile",
+													"value": "true",
+													"type": "text",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"id": "7a44d3d6-dad2-4158-a2fa-a8978b82f735"
+						},
 						{
 							"name": "Order1",
 							"event": [
