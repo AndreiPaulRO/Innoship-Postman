@@ -774,7 +774,7 @@
 							"response": []
 						},
 						{
-							"name": "OrderStandard Copy",
+							"name": "Order1withCOD",
 							"event": [
 								{
 									"listen": "test",
