@@ -711,7 +711,7 @@
 							"name": "LabelCheck",
 							"item": [
 								{
-									"name": "Label Copy",
+									"name": "Label A6",
 									"id": "aab3a802-d979-47b9-9b25-01b1f17d9912",
 									"protocolProfileBehavior": {
 										"disableBodyPruning": true
