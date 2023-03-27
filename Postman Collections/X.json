@@ -1207,7 +1207,7 @@
 							"response": []
 						},
 						{
-							"name": "Order COD A",
+							"name": "Order Best Price COD A",
 							"event": [
 								{
 									"listen": "test",
