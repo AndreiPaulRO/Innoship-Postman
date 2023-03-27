@@ -1151,7 +1151,7 @@
 					"name": "eColet",
 					"item": [
 						{
-							"name": "Order BestPrice Alex",
+							"name": "Order BestPrice A",
 							"event": [
 								{
 									"listen": "test",
