@@ -1610,7 +1610,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.innoship.com/api/Label/by-courier/67/awb/1014962239?type=pdf&format=A6&skipCache=true",
+									"raw": "https://api.innoship.com/api/Label/by-courier/67/awb/7030810021215815?type=pdf&format=A6&skipCache=true",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1623,7 +1623,7 @@
 										"by-courier",
 										"67",
 										"awb",
-										"1014962239"
+										"7030810021215815"
 									],
 									"query": [
 										{
