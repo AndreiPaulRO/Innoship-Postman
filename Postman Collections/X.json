@@ -1585,7 +1585,7 @@
 					"name": "Slovak Parcel Service",
 					"item": [
 						{
-							"name": "L",
+							"name": "Label",
 							"id": "143be58a-f7cc-47cc-b859-07515c6e3878",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
