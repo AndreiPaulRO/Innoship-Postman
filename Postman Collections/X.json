@@ -1650,7 +1650,7 @@
 							"response": []
 						},
 						{
-							"name": "Label ZPL Copy",
+							"name": "Label ZPL",
 							"id": "b5ed65b6-f1b1-45a0-894a-a4032902dcf0",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
