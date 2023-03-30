@@ -127,7 +127,7 @@
 			"name": "TEST Scenarios",
 			"item": [
 				{
-					"name": "StandardOrder",
+					"name": "standardOrder",
 					"event": [
 						{
 							"listen": "test",
