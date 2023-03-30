@@ -149,8 +149,8 @@
 									"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
 									"\r",
 									"var value = pm.environment.get(\"externalOrderId\");\r",
-									"value = 100;\r",
-									"pm.environment.set(\"externalOrderId\", value+1);"
+									"value = 100100;\r",
+									"pm.environment.set(\"externalOrderId\", value);"
 								],
 								"type": "text/javascript"
 							}
