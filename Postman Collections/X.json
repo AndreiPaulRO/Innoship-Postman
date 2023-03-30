@@ -257,18 +257,6 @@
 						"url": "https://api.innoship.com/api/Order"
 					},
 					"response": []
-				},
-				{
-					"name": "New Request",
-					"id": "bd0c3a7e-22c1-4851-b2a8-d35b81278c5c",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
 				}
 			],
 			"id": "e5d5eb0f-1704-4ac4-b37a-12d03f669c38"
