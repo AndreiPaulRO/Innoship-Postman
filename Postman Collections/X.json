@@ -585,6 +585,11 @@
 					"id": "4523a4ed-117c-4cae-b6d1-c16c8dbe2158"
 				},
 				{
+					"name": "New Folder",
+					"item": [],
+					"id": "62f97750-07ee-4de8-8e52-63a709dc2779"
+				},
+				{
 					"name": "Order",
 					"event": [
 						{
