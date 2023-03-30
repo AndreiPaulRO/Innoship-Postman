@@ -329,7 +329,138 @@
 				},
 				{
 					"name": "Label",
-					"item": [],
+					"item": [
+						{
+							"name": "Label",
+							"id": "143be58a-f7cc-47cc-b859-07515c6e3878",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "Content-type",
+										"value": "application/pdf",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.innoship.com/api/Label/by-courier/{{courierId}}/awb/7030810021215815?type=pdf&format=A6&skipCache=true",
+									"protocol": "https",
+									"host": [
+										"api",
+										"innoship",
+										"com"
+									],
+									"path": [
+										"api",
+										"Label",
+										"by-courier",
+										"{{courierId}}",
+										"awb",
+										"7030810021215815"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "pdf"
+										},
+										{
+											"key": "format",
+											"value": "A6"
+										},
+										{
+											"key": "skipCache",
+											"value": "true"
+										},
+										{
+											"key": "useFile",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Label ZPL",
+							"id": "b5ed65b6-f1b1-45a0-894a-a4032902dcf0",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									},
+									{
+										"key": "Content-type",
+										"value": "application/pdf",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.innoship.com/api/Label/by-courier/81/awb/1014962239?type=ZPL&format=A6&skipCache=true",
+									"protocol": "https",
+									"host": [
+										"api",
+										"innoship",
+										"com"
+									],
+									"path": [
+										"api",
+										"Label",
+										"by-courier",
+										"81",
+										"awb",
+										"1014962239"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "ZPL"
+										},
+										{
+											"key": "format",
+											"value": "A6"
+										},
+										{
+											"key": "skipCache",
+											"value": "true"
+										},
+										{
+											"key": "useFile",
+											"value": "true",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
 					"id": "1bd92b14-3904-4c4d-9dc1-58b853be1b48"
 				}
 			],
@@ -1735,136 +1866,6 @@
 				{
 					"name": "Slovak Parcel Service",
 					"item": [
-						{
-							"name": "Label",
-							"id": "143be58a-f7cc-47cc-b859-07515c6e3878",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Api-Key",
-										"value": "{{X-Api-Key}}",
-										"type": "text"
-									},
-									{
-										"key": "api-version",
-										"value": "1.0",
-										"type": "text"
-									},
-									{
-										"key": "Content-type",
-										"value": "application/pdf",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://api.innoship.com/api/Label/by-courier/67/awb/7030810021215815?type=pdf&format=A6&skipCache=true",
-									"protocol": "https",
-									"host": [
-										"api",
-										"innoship",
-										"com"
-									],
-									"path": [
-										"api",
-										"Label",
-										"by-courier",
-										"67",
-										"awb",
-										"7030810021215815"
-									],
-									"query": [
-										{
-											"key": "type",
-											"value": "pdf"
-										},
-										{
-											"key": "format",
-											"value": "A6"
-										},
-										{
-											"key": "skipCache",
-											"value": "true"
-										},
-										{
-											"key": "useFile",
-											"value": "true",
-											"type": "text",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Label ZPL",
-							"id": "b5ed65b6-f1b1-45a0-894a-a4032902dcf0",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-Api-Key",
-										"value": "{{X-Api-Key}}",
-										"type": "text"
-									},
-									{
-										"key": "api-version",
-										"value": "1.0",
-										"type": "text"
-									},
-									{
-										"key": "Content-type",
-										"value": "application/pdf",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "https://api.innoship.com/api/Label/by-courier/81/awb/1014962239?type=ZPL&format=A6&skipCache=true",
-									"protocol": "https",
-									"host": [
-										"api",
-										"innoship",
-										"com"
-									],
-									"path": [
-										"api",
-										"Label",
-										"by-courier",
-										"81",
-										"awb",
-										"1014962239"
-									],
-									"query": [
-										{
-											"key": "type",
-											"value": "ZPL"
-										},
-										{
-											"key": "format",
-											"value": "A6"
-										},
-										{
-											"key": "skipCache",
-											"value": "true"
-										},
-										{
-											"key": "useFile",
-											"value": "true",
-											"type": "text",
-											"disabled": true
-										}
-									]
-								}
-							},
-							"response": []
-						},
 						{
 							"name": "Order SK 1",
 							"event": [
