@@ -585,11 +585,6 @@
 					"id": "4523a4ed-117c-4cae-b6d1-c16c8dbe2158"
 				},
 				{
-					"name": "New Folder",
-					"item": [],
-					"id": "62f97750-07ee-4de8-8e52-63a709dc2779"
-				},
-				{
 					"name": "Order",
 					"event": [
 						{
@@ -1892,6 +1887,11 @@
 				}
 			],
 			"id": "f691c9ec-5441-4516-9584-6859d3efb736"
+		},
+		{
+			"name": "New Folder",
+			"item": [],
+			"id": "e5d5eb0f-1704-4ac4-b37a-12d03f669c38"
 		}
 	]
 }
