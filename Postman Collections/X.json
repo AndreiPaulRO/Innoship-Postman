@@ -1539,7 +1539,7 @@
 							"response": []
 						},
 						{
-							"name": "Order Saturday Copy",
+							"name": "PickUp Saturday",
 							"event": [
 								{
 									"listen": "test",
