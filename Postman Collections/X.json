@@ -496,7 +496,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder RoD SWAP",
+							"name": "Order RoD SWAP",
 							"event": [
 								{
 									"listen": "test",
