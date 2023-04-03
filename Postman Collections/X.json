@@ -2271,7 +2271,7 @@
 							"response": []
 						},
 						{
-							"name": "Order mp COD Copy",
+							"name": "PickUP mp COD",
 							"event": [
 								{
 									"listen": "test",
