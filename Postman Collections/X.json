@@ -435,7 +435,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder COD RoD",
+							"name": "Order COD RoD",
 							"event": [
 								{
 									"listen": "test",
