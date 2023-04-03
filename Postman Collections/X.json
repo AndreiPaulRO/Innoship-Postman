@@ -801,7 +801,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder COD Cash Bank",
+							"name": "Order COD Cash Bank",
 							"event": [
 								{
 									"listen": "test",
