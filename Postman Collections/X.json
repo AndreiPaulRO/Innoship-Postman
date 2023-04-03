@@ -1045,7 +1045,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder 2",
+							"name": "Order 2",
 							"event": [
 								{
 									"listen": "test",
