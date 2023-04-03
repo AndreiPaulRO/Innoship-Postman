@@ -1228,7 +1228,7 @@
 							"response": []
 						},
 						{
-							"name": "Order 3",
+							"name": "Order payer 3",
 							"event": [
 								{
 									"listen": "test",
