@@ -2088,7 +2088,7 @@
 							"response": []
 						},
 						{
-							"name": "Order COD Cash Bank Copy",
+							"name": "PickUp COD Cash Bank",
 							"event": [
 								{
 									"listen": "test",
