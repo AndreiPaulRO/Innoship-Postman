@@ -252,7 +252,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder RoD Copy",
+							"name": "standardOrder RoD SWAP",
 							"event": [
 								{
 									"listen": "test",
