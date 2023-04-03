@@ -252,7 +252,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder Saturday",
+							"name": "Order Saturday",
 							"event": [
 								{
 									"listen": "test",
