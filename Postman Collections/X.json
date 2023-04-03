@@ -557,7 +557,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder SWAP",
+							"name": "Order SWAP",
 							"event": [
 								{
 									"listen": "test",
