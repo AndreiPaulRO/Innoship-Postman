@@ -2149,7 +2149,7 @@
 							"response": []
 						},
 						{
-							"name": "Order Palet Copy",
+							"name": "PickUp Palet",
 							"event": [
 								{
 									"listen": "test",
