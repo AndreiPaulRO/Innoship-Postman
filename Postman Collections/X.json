@@ -1661,7 +1661,7 @@
 							"response": []
 						},
 						{
-							"name": "Order RoD Copy",
+							"name": "PickUP RoD",
 							"event": [
 								{
 									"listen": "test",
