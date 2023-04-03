@@ -313,7 +313,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder Voucher",
+							"name": "Order Voucher",
 							"event": [
 								{
 									"listen": "test",
