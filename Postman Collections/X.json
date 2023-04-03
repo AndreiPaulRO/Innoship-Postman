@@ -1783,7 +1783,7 @@
 							"response": []
 						},
 						{
-							"name": "Order RoD SWAP Copy",
+							"name": "PickUp RoD SWAP",
 							"event": [
 								{
 									"listen": "test",
