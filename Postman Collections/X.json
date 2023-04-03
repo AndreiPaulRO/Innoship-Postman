@@ -250,6 +250,67 @@
 								"url": "https://api.innoship.com/api/Order"
 							},
 							"response": []
+						},
+						{
+							"name": "standardOrder 3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "731eb3f5-73cd-48b0-a5e4-bd0ebdb1f144",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": 1,\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 2,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
 						}
 					],
 					"id": "5c4c0a3b-d046-411c-8cf0-422700790cf5"
