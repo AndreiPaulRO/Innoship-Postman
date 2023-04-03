@@ -1106,7 +1106,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder 3",
+							"name": "Order 3",
 							"event": [
 								{
 									"listen": "test",
