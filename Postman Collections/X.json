@@ -862,7 +862,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder Palet",
+							"name": "Order Palet",
 							"event": [
 								{
 									"listen": "test",
