@@ -679,7 +679,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder Insurance",
+							"name": "Order Insurance",
 							"event": [
 								{
 									"listen": "test",
