@@ -1905,7 +1905,7 @@
 							"response": []
 						},
 						{
-							"name": "Order COD Cash Copy",
+							"name": "PickUp COD Cash",
 							"event": [
 								{
 									"listen": "test",
