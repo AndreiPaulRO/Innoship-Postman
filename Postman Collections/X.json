@@ -1844,7 +1844,7 @@
 							"response": []
 						},
 						{
-							"name": "Order SWAP Copy",
+							"name": "PickUp SWAP",
 							"event": [
 								{
 									"listen": "test",
