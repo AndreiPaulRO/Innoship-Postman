@@ -2332,7 +2332,7 @@
 							"response": []
 						},
 						{
-							"name": "Order payer 2 Copy",
+							"name": "PickUp payer 1",
 							"event": [
 								{
 									"listen": "test",
