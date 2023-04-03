@@ -2210,7 +2210,7 @@
 							"response": []
 						},
 						{
-							"name": "Order mp Copy",
+							"name": "PickUp mp",
 							"event": [
 								{
 									"listen": "test",
