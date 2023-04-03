@@ -1293,7 +1293,1167 @@
 				},
 				{
 					"name": "PickUp",
-					"item": [],
+					"item": [
+						{
+							"name": "PickUp",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "a2d22a78-435c-4cf0-9006-934053a75cb9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order Envelope Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "6c5a3d04-3cc5-4b61-8103-558da2ab82af",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 1,\r\n    \"parcelsCount\": 0,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 0.5,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 0.5,\r\n        \"type\": \"Envelope\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order noParcels Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "bbe1a921-0254-42c3-ba03-75cff0b57d22",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [ ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order OpenP Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "3e37f786-7e73-4331-b0df-11594f61cee2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": true,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order Saturday Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "ebf67cbe-60a2-4e6f-b986-0e8e1ec32406",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": true,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order Voucher Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "afa5ef3c-6351-4e8f-b638-f21096629601",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": true,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order RoD Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "a9a64c24-8541-4cab-b560-8ffdbd476c43",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": true,\r\n    \"returnOfDocumentsComment\": \"comment rod\",\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order COD RoD Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "e2302353-2cb9-4012-91ce-1e714c2952ff",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 100,\r\n    \"bankRepaymentCurrency\": \"{{currency}}\",\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": true,\r\n    \"returnOfDocumentsComment\": \"comment rod\",\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order RoD SWAP Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "6e003452-b3a4-4b5b-8875-192f1325e19c",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": true,\r\n    \"returnOfDocumentsComment\": \"comment rod\",\r\n    \"returnPackage\": true,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order SWAP Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "448a47e1-0065-460f-a80f-3e25777cae60",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": true,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order COD Cash Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "8b812b16-4d9b-4da1-872f-4c089ed5cdd9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": 100,\r\n    \"cashOnDeliveryAmountCurrency\": \"{{currency}}\",\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order Insurance Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "1c20ea72-7e80-4cb9-bf3a-02a953ab99de",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": 100,\r\n    \"insuranceAmountCurrency\": \"{{currency}}\",\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order COD Bank Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "93c37589-fa0c-4838-b8de-8ad11a8b1440",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 100,\r\n    \"bankRepaymentCurrency\": \"{{currency}}\",\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order COD Cash Bank Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "0d216ef6-ae1a-48ce-a815-f625e1ddb374",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 100,\r\n    \"bankRepaymentCurrency\": \"{{currency}}\",\r\n    \"cashOnDeliveryAmount\": 50,\r\n    \"cashOnDeliveryAmountCurrency\": \"{{currency}}\",\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order Palet Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "eac068f5-6ff4-429b-85c3-efd800b32720",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 0,\r\n    \"palettesCount\": 1,\r\n    \"totalWeight\": 200,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 80,\r\n          \"height\": 80,\r\n          \"length\": 120\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Palet\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order mp Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "f13284a8-af52-49f5-9429-48c36e553245",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 3,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 10,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      },\r\n       {\r\n        \"sequenceNo\": 2,\r\n        \"size\": {\r\n          \"width\": 20,\r\n          \"height\": 20,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      },\r\n       {\r\n        \"sequenceNo\": 3,\r\n        \"size\": {\r\n          \"width\": 30,\r\n          \"height\": 30,\r\n          \"length\": 30\r\n        },\r\n        \"weight\": 6,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order mp COD Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "9cb7a8dd-253d-4ff3-8afe-ddb2befed0cf",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 3,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 10,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      },\r\n       {\r\n        \"sequenceNo\": 2,\r\n        \"size\": {\r\n          \"width\": 20,\r\n          \"height\": 20,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      },\r\n       {\r\n        \"sequenceNo\": 3,\r\n        \"size\": {\r\n          \"width\": 30,\r\n          \"height\": 30,\r\n          \"length\": 30\r\n        },\r\n        \"weight\": 6,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 100,\r\n    \"bankRepaymentCurrency\": \"{{currency}}\",\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order payer 2 Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "805d40a4-4042-49fb-acb5-c6ac93910631",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 2,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						},
+						{
+							"name": "Order payer 3 Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+										"exec": [
+											"const moment = require('moment');\r",
+											"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+											"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+											"\r",
+											"var value = pm.environment.get(\"externalOrderId\");\r",
+											"value = 100100;\r",
+											"pm.environment.set(\"externalOrderId\", value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "0ac17666-cd1d-4759-991e-925490e6206a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Test Recipient\",\r\n    \"contactPerson\": \"Test Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{CountyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\",\r\n    \"fixedLocationId\": {{fixedLocationId}},\r\n    \"courierFixedLocationId\": \"{{courierFixedLocationId}}\"\r\n  },\r\n  \"payment\": 2,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 10\r\n        },\r\n        \"weight\": 3,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Order"
+							},
+							"response": []
+						}
+					],
 					"id": "37aec0f1-8301-4e0b-91da-5d3665af576f"
 				},
 				{
