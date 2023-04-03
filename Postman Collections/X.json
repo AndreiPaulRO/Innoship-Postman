@@ -2393,7 +2393,7 @@
 							"response": []
 						},
 						{
-							"name": "Order payer 3 Copy",
+							"name": "PickUp payer 3",
 							"event": [
 								{
 									"listen": "test",
