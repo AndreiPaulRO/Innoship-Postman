@@ -984,7 +984,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder mp COD",
+							"name": "Order mp COD",
 							"event": [
 								{
 									"listen": "test",
