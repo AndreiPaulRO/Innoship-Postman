@@ -2460,7 +2460,7 @@
 					"name": "ThirdParty",
 					"item": [
 						{
-							"name": "standardThirdParty",
+							"name": "ThirdParty",
 							"event": [
 								{
 									"listen": "test",
