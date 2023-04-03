@@ -2682,7 +2682,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.innoship.com/api/Label/by-courier/{{courierId}}/awb/7030810021215815?type=ZPL&format=A6&skipCache=true",
+									"raw": "https://api.innoship.com/api/Label/by-courier/{{courierId}}/awb/7030810021215815?type=ZPL&format=A6_300DPI&skipCache=true",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -2704,7 +2704,7 @@
 										},
 										{
 											"key": "format",
-											"value": "A6"
+											"value": "A6_300DPI"
 										},
 										{
 											"key": "skipCache",
