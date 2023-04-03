@@ -191,7 +191,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder OpenP",
+							"name": "Order OpenP",
 							"event": [
 								{
 									"listen": "test",
