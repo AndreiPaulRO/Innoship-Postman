@@ -1600,7 +1600,7 @@
 							"response": []
 						},
 						{
-							"name": "Order Voucher Copy",
+							"name": "PickUp Voucher",
 							"event": [
 								{
 									"listen": "test",
