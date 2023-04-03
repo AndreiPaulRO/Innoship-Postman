@@ -923,7 +923,7 @@
 							"response": []
 						},
 						{
-							"name": "standardOrder mp",
+							"name": "Order mp",
 							"event": [
 								{
 									"listen": "test",
