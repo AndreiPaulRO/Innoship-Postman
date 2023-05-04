@@ -1167,7 +1167,7 @@
 							"response": []
 						},
 						{
-							"name": "Order Palet Service",
+							"name": "Order Palet Copy",
 							"event": [
 								{
 									"listen": "test",
