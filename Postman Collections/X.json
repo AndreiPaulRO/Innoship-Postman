@@ -923,7 +923,7 @@
 							"response": []
 						},
 						{
-							"name": "Order COD Bank Copy",
+							"name": "Order COD Bank EUR",
 							"event": [
 								{
 									"listen": "test",
