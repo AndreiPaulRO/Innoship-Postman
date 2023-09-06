@@ -3127,7 +3127,7 @@
 							"response": []
 						},
 						{
-							"name": "printVoucher Copy",
+							"name": "printVoucher",
 							"id": "75bb6cd1-f742-4ae4-86db-1d81640ebe9d",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
