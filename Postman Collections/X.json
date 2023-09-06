@@ -278,6 +278,10 @@
 									"script": {
 										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
 										"exec": [
+											"// Parse the JSON response\r",
+											"var responseBody = pm.response.json();\r",
+											"var courierName = responseBody.courierName;\r",
+											"\r",
 											"// Define a Postman test\r",
 											"pm.test(\"Payment ThirdParty not supported \", function () {\r",
 											"    // Parse the JSON response\r",
@@ -290,8 +294,8 @@
 											"    for (var i = 0; i < responseBody.errors[0].details.length; i++) {\r",
 											"        var detail = responseBody.errors[0].details[i];\r",
 											"        \r",
-											"        // Check if the current detail starts with \"Cargus\"\r",
-											"        if (detail.startsWith(\"Cargus\")) {\r",
+											"        // Check if the current detail starts with courierName\r",
+											"        if (detail.startsWith(courierName)) {\r",
 											"            // If it does, add the entire row to the matchingRows array\r",
 											"            matchingRows.push(detail);\r",
 											"        }\r",
