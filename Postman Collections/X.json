@@ -142,10 +142,12 @@
 											"});\r",
 											"\r",
 											"// Get the courierShipmentId from the response\r",
+											"var responseBody = pm.response.json();\r",
+											"var courierShipmentId = responseBody.courierShipmentId;\r",
 											"\r",
 											"// Display the courierShipmentId in the test result\r",
 											"pm.test(\"AWB \" + courierShipmentId, function () {\r",
-											"    pm.expect(pm.response.json().courierShipmentId).to.not.be.empty;\r",
+											"    pm.expect(courierShipmentId).to.not.be.empty;\r",
 											"});"
 										],
 										"type": "text/javascript"
