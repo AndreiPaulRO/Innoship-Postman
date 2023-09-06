@@ -1369,10 +1369,13 @@
 											"    pm.expect(jsonData.errors[0].details[1]).to.include(\"Parcel type Pallet not supported or implemented for this service\");\r",
 											"});\r",
 											"\r",
-											"pm.test(\"Extract carrier name\", function () {\r",
-											"    var jsonData = pm.response.json();\r",
-											"    var requestCarrierId = pm.request.body.courierId;\r",
-											"    console.log(requestCarrierId);\r",
+											"pm.test(\"Extract courier name\", function () {\r",
+											"    var requestBody = pm.request.body;\r",
+											"    var requestBodyJson = JSON.parse(requestBody);\r",
+											"    if (requestBodyJson.hasOwnProperty(\"courierId\")) {\r",
+											"        var actualCourierId = requestBodyJson.CourierId;\r",
+											"        console.log(actualCourierId);\r",
+											"    }\r",
 											"});"
 										],
 										"type": "text/javascript"
