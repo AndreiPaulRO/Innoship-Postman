@@ -1363,6 +1363,13 @@
 									"script": {
 										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
 										"exec": [
+											"// test for Cargus\r",
+											"\r",
+											"pm.test(\"Standard PALET restriction\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"//    console.log(jsonData);\r",
+											"    pm.expect(jsonData.errors[0].details[1]).to.include(\"Payment ThirdParty not supported for\");\r",
+											"});\r",
 											""
 										],
 										"type": "text/javascript"
