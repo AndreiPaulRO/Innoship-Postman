@@ -3519,7 +3519,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.innoship.com/api/Location/FixedLocations?Courier=1",
+									"raw": "https://api.innoship.com/api/Location/FixedLocations?LocalityName={{localityName}}&CountyName={{countyName}}&CountryCode={{country}}&Courier={{courierId}}",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -3539,18 +3539,15 @@
 										},
 										{
 											"key": "LocalityName",
-											"value": "Bratislava",
-											"disabled": true
+											"value": "{{localityName}}"
 										},
 										{
 											"key": "CountyName",
-											"value": "Bratislava I",
-											"disabled": true
+											"value": "{{countyName}}"
 										},
 										{
 											"key": "CountryCode",
-											"value": "SK",
-											"disabled": true
+											"value": "{{country}}"
 										},
 										{
 											"key": "ShowInactive",
@@ -3588,7 +3585,7 @@
 										},
 										{
 											"key": "Courier",
-											"value": "1"
+											"value": "{{courierId}}"
 										}
 									]
 								}
