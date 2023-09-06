@@ -283,7 +283,10 @@
 									"script": {
 										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
 										"exec": [
-											""
+											"pm.test(\"Check Implementation\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.expect(jsonData.errors[0].details[0]).to.include(\"Payment ThirdParty not supported for Cargus\");\r",
+											"});"
 										],
 										"type": "text/javascript"
 									}
