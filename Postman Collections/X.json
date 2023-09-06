@@ -3035,7 +3035,153 @@
 				},
 				{
 					"name": "Voucher",
-					"item": [],
+					"item": [
+						{
+							"name": "CreateVoucher",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0ffe898d-7ddd-4b59-b87e-46694862c114",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "75399f6c-6219-4783-83ac-414d9e17c57a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"courier\": 80,\r\n    \"CourierShipmentId\": \"70900506129\",\r\n    \"VoucherCourier\": 15,\r\n    \"InsuranceAmount\": 100,\r\n    \"InsuranceCurrency\": \"EUR\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Voucher/Create"
+							},
+							"response": []
+						},
+						{
+							"name": "ActivateVoucher Copy",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "0ffe898d-7ddd-4b59-b87e-46694862c114",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "947830e1-8b59-42ad-a423-4bbe3bc20e8a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"courier\": \"Sameday\",\r\n  \"courierShipmentId\": \"string\",\r\n  \"courierShipmentVoucher\": \"string\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://api.innoship.com/api/Voucher/Activate"
+							},
+							"response": []
+						},
+						{
+							"name": "printVoucher Copy",
+							"id": "75bb6cd1-f742-4ae4-86db-1d81640ebe9d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.innoship.com/api/Label/by-courier/3/voucher/4248300019668?format=A6&type=ZPL",
+									"protocol": "https",
+									"host": [
+										"api",
+										"innoship",
+										"com"
+									],
+									"path": [
+										"api",
+										"Label",
+										"by-courier",
+										"3",
+										"voucher",
+										"4248300019668"
+									],
+									"query": [
+										{
+											"key": "format",
+											"value": "A6"
+										},
+										{
+											"key": "skipCache",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "ZPL"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
 					"id": "fb19541b-df98-4d95-87b2-4a81e79dde31"
 				}
 			],
