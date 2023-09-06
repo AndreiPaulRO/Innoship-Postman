@@ -3497,7 +3497,105 @@
 				},
 				{
 					"name": "Location",
-					"item": [],
+					"item": [
+						{
+							"name": "FixedLocations",
+							"id": "69c900a2-7a29-4576-ad61-f44a87509aa4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Api-Key",
+										"value": "{{X-Api-Key}}",
+										"type": "text"
+									},
+									{
+										"key": "api-version",
+										"value": "1.0",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.innoship.com/api/Location/FixedLocations?Courier=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"innoship",
+										"com"
+									],
+									"path": [
+										"api",
+										"Location",
+										"FixedLocations"
+									],
+									"query": [
+										{
+											"key": "ExternalLocationId",
+											"value": "SK",
+											"disabled": true
+										},
+										{
+											"key": "LocalityName",
+											"value": "Bratislava",
+											"disabled": true
+										},
+										{
+											"key": "CountyName",
+											"value": "Bratislava I",
+											"disabled": true
+										},
+										{
+											"key": "CountryCode",
+											"value": "SK",
+											"disabled": true
+										},
+										{
+											"key": "ShowInactive",
+											"value": "true",
+											"disabled": true
+										},
+										{
+											"key": "FixedLocationType",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "Latitude",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "Longitude",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "Radius",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "Courier",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
 					"id": "6ed377d7-960a-476b-9d23-be1830547e9a"
 				}
 			],
