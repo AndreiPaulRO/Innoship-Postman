@@ -139,7 +139,14 @@
 										"exec": [
 											"pm.test(\"HTTP response is 200\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
-											"});"
+											"});\r",
+											"\r",
+											"// Get the courierShipmentId from the response\r",
+											"var responseBody = pm.response.json();\r",
+											"var courierShipmentId = responseBody.courierShipmentId;\r",
+											"\r",
+											"// Display the courierShipmentId\r",
+											"console.log(\"Courier Shipment ID: \" + courierShipmentId);"
 										],
 										"type": "text/javascript"
 									}
