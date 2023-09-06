@@ -3147,7 +3147,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.innoship.com/api/Label/by-courier/3/voucher/4248300019668?format=A6&type=ZPL",
+									"raw": "https://api.innoship.com/api/Label/by-courier/{{courierId}}/voucher/4248300019668?format=A6&type=ZPL",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -3158,7 +3158,7 @@
 										"api",
 										"Label",
 										"by-courier",
-										"3",
+										"{{courierId}}",
 										"voucher",
 										"4248300019668"
 									],
