@@ -137,7 +137,9 @@
 									"script": {
 										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
 										"exec": [
-											""
+											"pm.test(\"HTTP response is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
 										],
 										"type": "text/javascript"
 									}
