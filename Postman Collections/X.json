@@ -279,8 +279,8 @@
 										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
 										"exec": [
 											"// Parse the JSON response\r",
-											"var responseBody = pm.response.json();\r",
-											"var courierName = responseBody.courierName;\r",
+											"var requestBody = pm.request.json();\r",
+											"var courierName = requestBody.courierName;\r",
 											"\r",
 											"// Define a Postman test\r",
 											"pm.test(\"Payment ThirdParty not supported \", function () {\r",
