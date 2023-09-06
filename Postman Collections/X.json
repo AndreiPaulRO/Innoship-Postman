@@ -1372,10 +1372,8 @@
 											"pm.test(\"Extract courier name\", function () {\r",
 											"    var requestBody = pm.request.body;\r",
 											"    var requestBodyJson = JSON.parse(requestBody);\r",
-											"    if (requestBodyJson.hasOwnProperty(\"courierId\")) {\r",
-											"        var actualCourierId = requestBodyJson.CourierId;\r",
-											"        console.log(actualCourierId);\r",
-											"    }\r",
+											"    var actualCourierId = requestBodyJson.courierId;\r",
+											"    console.log(requestBodyJson);\r",
 											"});"
 										],
 										"type": "text/javascript"
