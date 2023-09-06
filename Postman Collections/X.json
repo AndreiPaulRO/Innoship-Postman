@@ -282,11 +282,18 @@
 											"\r",
 											"pm.test(\"Check Implementation - not Implemented\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
-											"//    console.log(jsonData);\r",
+											"    //    console.log(jsonData);\r",
 											"    pm.expect(jsonData.errors[0].details[1]).to.include(\"Payment ThirdParty not supported for\");\r",
 											"});\r",
 											"\r",
-											""
+											"// Get the correlationId from the response\r",
+											"var responseBody = pm.response.json();\r",
+											"var correlationId = responseBody.correlationId;\r",
+											"\r",
+											"// Display the courierShipmentId in the test result\r",
+											"pm.test(\"correlationId \" + correlationId, function () {\r",
+											"    pm.expect(correlationId).to.not.be.empty;\r",
+											"});"
 										],
 										"type": "text/javascript"
 									}
