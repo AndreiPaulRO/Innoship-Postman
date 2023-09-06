@@ -3070,7 +3070,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"courier\": 80,\r\n    \"CourierShipmentId\": \"70900506129\",\r\n    \"VoucherCourier\": 15,\r\n    \"InsuranceAmount\": 100,\r\n    \"InsuranceCurrency\": \"EUR\"\r\n}",
+									"raw": "{\r\n    \"courier\": {{courierId}},\r\n    \"CourierShipmentId\": \"70900506129\",\r\n    \"VoucherCourier\": {{courierId}},\r\n    \"InsuranceAmount\": 100,\r\n    \"InsuranceCurrency\": \"EUR\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
