@@ -560,11 +560,10 @@
 											"    pm.expect(courierShipmentId).to.not.be.empty;\r",
 											"});\r",
 											"\r",
-											"pm.test(\"OpenPackage TRUE \", function () {\r",
-											"    pm.expect(extra).to.not.be.empty;\r",
-											"});\r",
-											"\r",
-											""
+											"pm.test(\"openPackage TRUE\", function () {\r",
+											"    var responseBody = pm.response.json();\r",
+											"    pm.expect(responseBody.extra.openPackage).to.be.true;\r",
+											"});"
 										],
 										"type": "text/javascript"
 									}
