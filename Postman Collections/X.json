@@ -145,8 +145,11 @@
 											"var responseBody = pm.response.json();\r",
 											"var courierShipmentId = responseBody.courierShipmentId;\r",
 											"\r",
-											"// Display the courierShipmentId\r",
-											"console.log(\"Courier Shipment ID: \" + courierShipmentId);"
+											"// Display the courierShipmentId in the test result\r",
+											"pm.test(\"courierShipmentId \" + courierShipmentId, function () {\r",
+											"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+											"    console.log(\"Courier Shipment ID: \" + courierShipmentId);\r",
+											"});"
 										],
 										"type": "text/javascript"
 									}
