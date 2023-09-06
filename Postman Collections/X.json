@@ -3115,7 +3115,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"courier\": \"Sameday\",\r\n  \"courierShipmentId\": \"string\",\r\n  \"courierShipmentVoucher\": \"string\"\r\n}",
+									"raw": "{\r\n  \"courier\": {{courierId}},\r\n  \"courierShipmentId\": \"string\",\r\n  \"courierShipmentVoucher\": \"string\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
