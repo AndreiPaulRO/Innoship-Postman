@@ -1110,6 +1110,11 @@
 											"// Display the courierShipmentId in the test result\r",
 											"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
 											"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"COD value 100\", function () {\r",
+											"    var responseBody = pm.response.json();\r",
+											"    pm.expect(responseBody.extra.bankRepaymentAmount).to.be.true;\r",
 											"});"
 										],
 										"type": "text/javascript"
