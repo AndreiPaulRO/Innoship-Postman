@@ -1546,7 +1546,9 @@
 											"pm.test(\"Standard PALET restriction\", function () {\r",
 											"    var jsonData = pm.response.json();\r",
 											"    pm.expect(jsonData.errors[0].details[1]).to.include(\"Parcel type Pallet not supported or implemented for this service\");\r",
-											"});"
+											"});\r",
+											"\r",
+											""
 										],
 										"type": "text/javascript"
 									}
