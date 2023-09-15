@@ -482,6 +482,10 @@
 											"// Display the courierShipmentId in the test result\r",
 											"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
 											"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"No CourierParcelsBarcodes TRUE\", function () {\r",
+											"    pm.expect(pm.response.json()).to.not.have.property('CourierParcelsBarcodes');\r",
 											"});"
 										],
 										"type": "text/javascript"
