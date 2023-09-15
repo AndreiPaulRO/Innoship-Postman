@@ -478,6 +478,7 @@
 											"// Get the courierShipmentId from the response\r",
 											"var responseBody = pm.response.json();\r",
 											"var courierShipmentId = responseBody.courierShipmentId;\r",
+											"var CourierParcelsBarcodes = responseBody.CourierParcelsBarcodes;\r",
 											"\r",
 											"// Display the courierShipmentId in the test result\r",
 											"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
