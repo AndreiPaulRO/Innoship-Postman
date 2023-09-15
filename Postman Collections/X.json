@@ -1609,7 +1609,23 @@
 									"script": {
 										"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
 										"exec": [
-											""
+											"pm.test(\"HTTP response is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"// Get the courierShipmentId from the response\r",
+											"var responseBody = pm.response.json();\r",
+											"var courierShipmentId = responseBody.courierShipmentId;\r",
+											"\r",
+											"// Display the courierShipmentId in the test result\r",
+											"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+											"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+											"});\r",
+											"\r",
+											"pm.test(\"COD value 100\", function () {\r",
+											"    var responseBody = pm.response.json();\r",
+											"    pm.expect(responseBody.extra.bankRepaymentAmount).to.equal(100.0);\r",
+											"});"
 										],
 										"type": "text/javascript"
 									}
