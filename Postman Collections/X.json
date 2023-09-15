@@ -2002,6 +2002,11 @@
 					"name": "PickUp",
 					"item": [
 						{
+							"name": "New Folder",
+							"item": [],
+							"id": "c893f143-7692-48a5-81a8-b4ed0b262b8a"
+						},
+						{
 							"name": "PickUp",
 							"event": [
 								{
