@@ -1114,7 +1114,7 @@
 											"\r",
 											"pm.test(\"COD value 100\", function () {\r",
 											"    var responseBody = pm.response.json();\r",
-											"    pm.expect(responseBody.extra.bankRepaymentAmount).to.be.true;\r",
+											"    pm.expect(responseBody.extra.bankRepaymentAmount).to.equal(100.0);\r",
 											"});"
 										],
 										"type": "text/javascript"
