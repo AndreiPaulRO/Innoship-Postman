@@ -1480,7 +1480,7 @@
 											"\r",
 											"pm.test(\"Restriction !!!\", function () {\r",
 											"    var responseBody = pm.response.json();\r",
-											"    console.log(responseBody.errors.extra[1]);\r",
+											"    console.log(responseBody.errors.extra[0]);\r",
 											"    pm.expect(responseBody.errors.extra[1]).to.equal(\"The field BankRepaymentAmount and the field CashOnDeliveryAmount can't be requested in the same time.\");\r",
 											"});"
 										],
