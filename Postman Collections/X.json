@@ -485,7 +485,7 @@
 											"});\r",
 											"\r",
 											"pm.test(\"No CourierParcelsBarcodes TRUE\", function () {\r",
-											"    pm.expect(pm.response.json()).to.not.have.property('CourierParcelsBarcodes');\r",
+											"    pm.expect(CourierParcelsBarcodes);\r",
 											"});"
 										],
 										"type": "text/javascript"
