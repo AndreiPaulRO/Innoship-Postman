@@ -218,7 +218,7 @@
 											"var courierShipmentId = responseBody.courierShipmentId;\r",
 											"\r",
 											"// Display the courierShipmentId in the test result\r",
-											"pm.test(\"AWB created\" + courierShipmentId, function () {\r",
+											"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
 											"    pm.expect(courierShipmentId).to.not.be.empty;\r",
 											"});"
 										],
