@@ -4467,7 +4467,7 @@
 							"name": "ThirdParty",
 							"item": [
 								{
-									"name": "ThirdParty",
+									"name": "ThirdParty 1",
 									"event": [
 										{
 											"listen": "test",
