@@ -1172,7 +1172,7 @@
 									"response": []
 								},
 								{
-									"name": "Order COD Bank noIBAN",
+									"name": "Order Bank noIBAN",
 									"event": [
 										{
 											"listen": "test",
