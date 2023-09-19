@@ -5035,7 +5035,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.innoship.com/api/Location/FixedLocations?LocalityName={{localityName}}&CountyName={{countyName}}&CountryCode={{country}}&Courier={{courierId}}",
+									"raw": "https://api.innoship.com/api/Location/FixedLocations?LocalityName={{localityName}}&CountyName={{countyName}}&CountryCode={{country}}&FixedLocationType={{fixedLocationType}}&Courier={{courierId}}",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -5072,8 +5072,7 @@
 										},
 										{
 											"key": "FixedLocationType",
-											"value": "1",
-											"disabled": true
+											"value": "{{fixedLocationType}}"
 										},
 										{
 											"key": "Latitude",
