@@ -1685,6 +1685,1561 @@
 							"id": "028d91e1-fd2a-413b-8c69-80afd0c5e95b"
 						},
 						{
+							"name": "Lockers",
+							"item": [
+								{
+									"name": "Order",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "0ebcbfe2-d980-4dc4-98ef-6c0a7c9344af",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Normal Order\",\r\n    \"contactPerson\": \"Normal Order\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order payer 2",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "7ae4c736-5341-441d-9f73-7b1454e94a4b",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Payer Recipient\",\r\n    \"contactPerson\": \"Payer Recipient\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 2,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order payer 3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created\" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});\r",
+													"\r",
+													"// Parse the JSON request\r",
+													"var requestBody = JSON.parse(pm.request.body.raw);\r",
+													"var courierName = requestBody.courierName;\r",
+													"\r",
+													"// Define a Postman test\r",
+													"pm.test(\"Payment ThirdParty not supported for \" + courierName, function () {\r",
+													"    // Parse the JSON response\r",
+													"    var responseBody = pm.response.json();\r",
+													"\r",
+													"    // Initialize an array to store matching rows\r",
+													"    var matchingRows = [];\r",
+													"\r",
+													"    // Iterate through the \"details\" array\r",
+													"    for (var i = 0; i < responseBody.errors[0].details.length; i++) {\r",
+													"        var detail = responseBody.errors[0].details[i];\r",
+													"        \r",
+													"        // Check if the current detail starts with courierName\r",
+													"        if (detail.startsWith(courierName)) {\r",
+													"            // If it does, add the entire row to the matchingRows array\r",
+													"            matchingRows.push(detail);\r",
+													"        }\r",
+													"    }\r",
+													"\r",
+													"    // Check if any rows matched the criteria\r",
+													"    if (matchingRows.length > 0) {\r",
+													"        // Initialize a flag to check for \"Payment ThirdParty not supported\" text\r",
+													"        var paymentThirdPartyNotSupported = false;\r",
+													"\r",
+													"        // Iterate through the matching rows\r",
+													"        for (var j = 0; j < matchingRows.length; j++) {\r",
+													"            // Check if the row contains \"Payment ThirdParty not supported\"\r",
+													"            if (matchingRows[j].includes(\"Payment ThirdParty not supported\")) {\r",
+													"                paymentThirdPartyNotSupported = true;\r",
+													"                break; // Exit the loop if found\r",
+													"            }\r",
+													"        }\r",
+													"\r",
+													"        // Use pm.expect to check the condition\r",
+													"        pm.expect(paymentThirdPartyNotSupported).to.be.true;\r",
+													"    } else {\r",
+													"        // Use pm.expect to check the condition if no matching rows\r",
+													"        pm.expect(false).to.be.true;\r",
+													"    }\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "79f4a809-c45e-4f29-a890-6390538cfeeb",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"courierName\": \"{{courierName}}\",\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Payer Third\",\r\n    \"contactPerson\": \"Payer Third\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 3,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order Envelope",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "f2e4e6c0-7b40-4581-81cc-cca05f302ff4",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Order Envelope\",\r\n    \"contactPerson\": \"Order Envelope\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 1,\r\n    \"parcelsCount\": 0,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 0.5,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order noParcels",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "f871d8e9-250e-4f6c-9580-731ba3f3e22e",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Order noParcels\",\r\n    \"contactPerson\": \"Order noParcels\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [ ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order mp",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "98be5a27-f323-483c-b6bf-7854478a2a36",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Multi Parcel\",\r\n    \"contactPerson\": \"Multi Parcel\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 3,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 10,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      },\r\n       {\r\n        \"sequenceNo\": 2,\r\n        \"size\": {\r\n          \"width\": 20,\r\n          \"height\": 20,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      },\r\n       {\r\n        \"sequenceNo\": 3,\r\n        \"size\": {\r\n          \"width\": 30,\r\n          \"height\": 30,\r\n          \"length\": 30\r\n        },\r\n        \"weight\": 6,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order OpenP",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"courierShipmentId \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"openPackage TRUE\", function () {\r",
+													"    var responseBody = pm.response.json();\r",
+													"    pm.expect(responseBody.extra.openPackage).to.be.true;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "4d2da136-28de-4ef7-b706-fd8ba5b17bf6",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Open Package\",\r\n    \"contactPerson\": \"Open Package\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": true,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order Saturday",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"courierShipmentId \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"saturdayDelivery TRUE\", function () {\r",
+													"    var responseBody = pm.response.json();\r",
+													"    pm.expect(responseBody.extra.saturdayDelivery).to.be.true;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "1cb48fa6-abc7-47dd-884b-75d989748b8c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"saturday Delivery\",\r\n    \"contactPerson\": \"saturday Delivery\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": true,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order Voucher",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "4100fded-5ae6-473c-ac25-62e38142665f",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Return Voucher\",\r\n    \"contactPerson\": \"Return Voucher\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": true,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order RoD",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "444a19ea-afbd-42cb-94cc-5f5c87c2d817",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Return ofDocuments\",\r\n    \"contactPerson\": \"Return ofDocuments\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": true,\r\n    \"returnOfDocumentsComment\": \"comment rod\",\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order COD RoD",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "d9612db8-2607-4cc3-80de-83468f6d3603",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"COD ReturnOfDocuments\",\r\n    \"contactPerson\": \"COD ReturnOfDocuments\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 100,\r\n    \"bankRepaymentCurrency\": \"{{currency}}\",\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": true,\r\n    \"returnOfDocumentsComment\": \"comment rod\",\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": \"{{IBAN}}\"\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order RoD SWAP",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "7d593f62-b37c-442f-a368-b051f06a407a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"ReturnOfDocuments SWAP\",\r\n    \"contactPerson\": \"ReturnOfDocuments SWAP\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": true,\r\n    \"returnOfDocumentsComment\": \"comment rod\",\r\n    \"returnPackage\": true,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order SWAP",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "26e883f6-22e9-4d83-a1cf-168672fc6559",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Return Package\",\r\n    \"contactPerson\": \"Return Package\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": true,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order COD Bank",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"COD value 100\", function () {\r",
+													"    var responseBody = pm.response.json();\r",
+													"    pm.expect(responseBody.extra.bankRepaymentAmount).to.equal(100.0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "6f1a1712-45a3-4cd0-b0f2-230e437b2987",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"COD Bank\",\r\n    \"contactPerson\": \"COD Bank\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 100,\r\n    \"bankRepaymentCurrency\": \"{{currency}}\",\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": \"{{IBAN}}\"\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order COD Bank EUR",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"COD value 100\", function () {\r",
+													"    var responseBody = pm.response.json();\r",
+													"    pm.expect(responseBody.extra.bankRepaymentAmount).to.equal(100.0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "bc31db51-c115-421a-a475-201f82cd7235",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"COD BankEUR\",\r\n    \"contactPerson\": \"COD BankEUR\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 140,\r\n    \"bankRepaymentCurrency\": \"EUR\",\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": \"{{IBAN}}\"\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order COD Cash",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"COD value 100\", function () {\r",
+													"    var responseBody = pm.response.json();\r",
+													"    pm.expect(responseBody.extra.bankRepaymentAmount).to.equal(100.0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "973dbd23-2a23-4185-837a-81a03f16105a",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"COD Cash\",\r\n    \"contactPerson\": \"COD Cash\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": 100,\r\n    \"cashOnDeliveryAmountCurrency\": \"{{currency}}\",\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order Insurance",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "911ddb8e-4ec8-4905-ae37-608aed65a7c5",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Order Insurance\",\r\n    \"contactPerson\": \"Order Insurance\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": 100,\r\n    \"insuranceAmountCurrency\": \"{{currency}}\",\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order Insurance + COD",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "c8b58de9-ed37-4ca1-bf42-23db4d39ba65",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Order Insurance\",\r\n    \"contactPerson\": \"Order Insurance\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": {{weight}},\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": {{weight}},\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 150,\r\n    \"bankRepaymentCurrency\": \"{{currency}}\",\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": 100,\r\n    \"insuranceAmountCurrency\": \"{{currency}}\",\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": \"{{IBAN}}\"\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order COD Cash Bank",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Restriction !!!\", function () {\r",
+													"    var responseBody = pm.response.json();\r",
+													"    pm.expect(responseBody.errors.extra[0]).to.equal(\"The field BankRepaymentAmount and the field CashOnDeliveryAmount can't be requested in the same time.\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "62f1c5a2-c619-444b-9270-6b41abe64e7c",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"COD cashBank\",\r\n    \"contactPerson\": \"COD cashBank\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 1,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 2,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 100,\r\n    \"bankRepaymentCurrency\": \"{{currency}}\",\r\n    \"cashOnDeliveryAmount\": 50,\r\n    \"cashOnDeliveryAmountCurrency\": \"{{currency}}\",\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": \"{{IBAN}}\"\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": false,\r\n    \"includePriceBreakdown\": false\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order Palet restrction",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"// test for Cargus\r",
+													"pm.test(\"Standard PALET restriction\", function () {\r",
+													"    var jsonData = pm.response.json();\r",
+													"    pm.expect(jsonData.errors[0].details[1]).to.include(\"Parcel type Pallet not supported or implemented for this service\");\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "f96dd66d-7a03-402b-8e6a-a2b8182f4e46",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"Order Palet\",\r\n    \"contactPerson\": \"Order Palet\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 0,\r\n    \"palettesCount\": 1,\r\n    \"totalWeight\": 200,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 80,\r\n          \"height\": 80,\r\n          \"length\": 120\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"pallet\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": null,\r\n    \"bankRepaymentCurrency\": null,\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": null\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								},
+								{
+									"name": "Order mp COD",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"id": "f3c9a1d4-f122-4b9d-933f-8425f330a5ae",
+												"exec": [
+													"pm.test(\"HTTP response is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"// Get the courierShipmentId from the response\r",
+													"var responseBody = pm.response.json();\r",
+													"var courierShipmentId = responseBody.courierShipmentId;\r",
+													"\r",
+													"// Display the courierShipmentId in the test result\r",
+													"pm.test(\"AWB created \" + courierShipmentId, function () {\r",
+													"    pm.expect(courierShipmentId).to.not.be.empty;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"COD value 100\", function () {\r",
+													"    var responseBody = pm.response.json();\r",
+													"    pm.expect(responseBody.extra.bankRepaymentAmount).to.equal(100.0);\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
+												"exec": [
+													"const moment = require('moment');\r",
+													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"\r",
+													"var value = pm.environment.get(\"externalOrderId\");\r",
+													"value = 100100;\r",
+													"pm.environment.set(\"externalOrderId\", value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"id": "fa5565af-ff30-4983-a5fa-fec7804ba7bf",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "X-Api-Key",
+												"value": "{{X-Api-Key}}",
+												"type": "text"
+											},
+											{
+												"key": "api-version",
+												"value": "1.0",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"serviceId\": {{serviceId}},\r\n  \"courierId\": {{courierId}},\r\n  \"shipmentDate\": \"{{shipmentDate}}\",\r\n  \"shipmentDateEnd\": \"{{shipmentDateEnd}}\",\r\n  \"addressTo\": {\r\n    \"name\": \"COD MultiParcel\",\r\n    \"contactPerson\": \"COD MultiParcel\",\r\n    \"country\": \"{{country}}\",\r\n    \"countyName\": \"{{countyName}}\",\r\n    \"localityName\": \"{{localityName}}\",\r\n    \"addressText\": \"{{address}}\",\r\n    \"postalCode\": \"{{postalCode}}\",\r\n    \"phone\": \"{{phone}}\",\r\n    \"email\": \"email@emailserver.com\"\r\n  },\r\n  \"payment\": 1,\r\n  \"content\": {\r\n    \"envelopeCount\": 0,\r\n    \"parcelsCount\": 3,\r\n    \"palettesCount\": 0,\r\n    \"totalWeight\": 10,\r\n    \"contents\": \"contents\",\r\n    \"package\": \"box\",\r\n    \"oversizedPackage\": false,\r\n    \"parcels\": [\r\n      {\r\n        \"sequenceNo\": 1,\r\n        \"size\": {\r\n          \"width\": 10,\r\n          \"height\": 10,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      },\r\n       {\r\n        \"sequenceNo\": 2,\r\n        \"size\": {\r\n          \"width\": 20,\r\n          \"height\": 20,\r\n          \"length\": 20\r\n        },\r\n        \"weight\": 2,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      },\r\n       {\r\n        \"sequenceNo\": 3,\r\n        \"size\": {\r\n          \"width\": 30,\r\n          \"height\": 30,\r\n          \"length\": 30\r\n        },\r\n        \"weight\": 6,\r\n        \"type\": \"Parcel\",\r\n        \"reference1\": \"pRef1\",\r\n        \"reference2\": \"pRef2\"\r\n      }\r\n    ]\r\n  },\r\n  \"extra\": {\r\n    \"bankRepaymentAmount\": 100,\r\n    \"bankRepaymentCurrency\": \"{{currency}}\",\r\n    \"cashOnDeliveryAmount\": null,\r\n    \"cashOnDeliveryAmountCurrency\": null,\r\n    \"declaredValueAmount\": null,\r\n    \"declaredValueAmountCurrency\": null,\r\n    \"openPackage\": null,\r\n    \"saturdayDelivery\": null,\r\n    \"insuranceAmount\": null,\r\n    \"insuranceAmountCurrency\": null,\r\n    \"reference1\": null,\r\n    \"reference2\": null,\r\n    \"reference3\": null,\r\n    \"reference4\": null,\r\n    \"returnOfDocuments\": null,\r\n    \"returnOfDocumentsComment\": null,\r\n    \"returnPackage\": null,\r\n    \"returnVoucher\": null,\r\n    \"bank\": null,\r\n    \"bankIBAN\": \"{{IBAN}}\"\r\n  },\r\n  \"parameters\": {\r\n    \"async\": true,\r\n    \"getParcelsBarcodes\": true,\r\n    \"includeCourierResponse\": true,\r\n    \"includePriceBreakdown\": true\r\n  },\r\n  \"ExternalClientLocation\": \"{{externalClientLocation}}\",\r\n  \"externalOrderId\": \"{{externalOrderId}}\",\r\n  \"metadata\": \"metadata\",\r\n  \"sourceChannel\": \"Testing\",\r\n  \"observation\": \"Call one hour before\"\r\n}\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "https://api.innoship.com/api/Order"
+									},
+									"response": []
+								}
+							],
+							"id": "764a05ad-ae89-4292-98bf-5742d434941c"
+						},
+						{
 							"name": "International",
 							"item": [
 								{
