@@ -1132,8 +1132,10 @@
 												"id": "00bc874f-dcfb-49a4-b0a8-806e7abefc08",
 												"exec": [
 													"const moment = require('moment');\r",
-													"pm.environment.set(\"shipmentDate\", moment().format(\"YYYY-MM-DD\"));\r",
-													"pm.environment.set(\"shipmentDateEnd\", moment().format(\"YYYY-MM-DD\"));\r",
+													"let currentDate = moment();\r",
+													"let futureDate = currentDate.add(1, 'days');\r",
+													"pm.environment.set(\"shipmentDate\", futureDate.format(\"YYYY-MM-DD\"));\r",
+													"pm.environment.set(\"shipmentDateEnd\", futureDate.format(\"YYYY-MM-DD\"));\r",
 													"\r",
 													"var value = pm.environment.get(\"externalOrderId\");\r",
 													"value = 100100;\r",
